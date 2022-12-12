@@ -22,14 +22,14 @@
         </analogs>
         <versions>
             <version>
-                <certificate number="1255.DF54565.158" dataFrom="2020-01" dataTo="2021-01"/>
-                <package type="Capsule" numberInPackage="12" priceForPackage="234$"/>
-                <dosage>100mg</dosage>
-            </version>
-            <version>
                 <certificate number="1255.DF54565.157" dataFrom="2019-01" dataTo="2021-01"/>
                 <package type="Pill" numberInPackage="12" priceForPackage="243$"/>
                 <dosage>200mg</dosage>
+            </version>
+            <version>
+                <certificate number="1255.DF54565.158" dataFrom="2020-01" dataTo="2021-01"/>
+                <package type="Capsule" numberInPackage="12" priceForPackage="234$"/>
+                <dosage>100mg</dosage>
             </version>
         </versions>
     </medicine>

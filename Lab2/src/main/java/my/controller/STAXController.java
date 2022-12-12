@@ -26,7 +26,7 @@ public class STAXController extends DefaultHandler {
     private final String filename;
 
     @Getter
-    private final List<Medicines.Medicine> medicines;
+    private List<Medicines.Medicine> medicines;
     Medicines.Medicine medicine;
 
     public STAXController(String filename) {
@@ -46,6 +46,7 @@ public class STAXController extends DefaultHandler {
             }
         } catch (XMLStreamException e) {
             Logger.getLogger(STAXController.class.getName()).log(Level.SEVERE, Constants.ERROR, e);
+            medicines = null;
         }
     }
 
@@ -127,6 +128,7 @@ public class STAXController extends DefaultHandler {
                 }
             } catch (XMLStreamException e) {
                 Logger.getLogger(STAXController.class.getName()).log(Level.SEVERE, Constants.ERROR, e);
+                medicines = null;
             }
         }
     }

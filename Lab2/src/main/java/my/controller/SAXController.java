@@ -25,7 +25,7 @@ public class SAXController extends DefaultHandler {
     private final String filename;
 
     @Getter
-    private final List<Medicines.Medicine> medicines;
+    private List<Medicines.Medicine> medicines;
     private final Deque<Object> elementDeque;
     private final Deque<Medicines.Medicine> objectDeque;
     private final Deque<Medicines.Medicine.Versions.Version> versionObjectDeque;
@@ -64,6 +64,7 @@ public class SAXController extends DefaultHandler {
             parser.parse(filename, this);
         } catch (SAXException | IOException | ParserConfigurationException e) {
             Logger.getLogger(SAXController.class.getName()).log(Level.SEVERE, Constants.ERROR, e);
+            medicines = null;
         }
     }
 

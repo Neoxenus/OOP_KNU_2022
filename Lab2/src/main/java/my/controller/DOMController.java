@@ -1,5 +1,6 @@
 package my.controller;
 
+import lombok.Getter;
 import my.Constants;
 import my.XML.Medicines;
 import org.w3c.dom.Document;
@@ -29,7 +30,8 @@ import java.util.logging.Logger;
 public class DOMController {
     private final String filename;
 
-    private final List<Medicines.Medicine> medicineList;
+    @Getter
+    private List<Medicines.Medicine> medicineList;
 
     public DOMController(String filename) {
         medicineList = new ArrayList<>();
@@ -70,7 +72,7 @@ public class DOMController {
                     String name = element.getElementsByTagName(Constants.NAME).item(0).getTextContent();
                     String pharm = element.getElementsByTagName(Constants.PHARM).item(0).getTextContent();
                     String group = element.getElementsByTagName(Constants.GROUP).item(0).getTextContent();
-                    List<String> analogs = Arrays.stream(element.getElementsByTagName(Constants.ANALOGS).item(0).getTextContent().split(Constants.SPLIT_REGEX)).toList();
+                    List<String> analogs = Arrays.stream(element.getElementsByTagName(Constants.ANALOGS).item(0).getTextContent().split(Constants.SPLIT_REGEX)).map(String::strip).toList();
                     Node nodeListVersions = element.getElementsByTagName(Constants.VERSIONS).item(0);
                     Medicines.Medicine.Versions versions = getVersions(nodeListVersions);
 
@@ -80,6 +82,7 @@ public class DOMController {
             }
         } catch (ParserConfigurationException | SAXException | IOException e) {
             Logger.getLogger(DOMController.class.getName()).log(Level.SEVERE, Constants.ERROR, e);
+            medicineList = null;
         }
     }
 

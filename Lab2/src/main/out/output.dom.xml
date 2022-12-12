@@ -5,8 +5,7 @@
         <pharm>Med-corp</pharm>
         <group>антибиотики</group>
         <analogs>First Paracetamol,
-Second Paracetamol
-        </analogs>
+Second Paracetamol</analogs>
         <versions>
             <version>
                 <certificate dataFrom="2020-01" dataTo="2021-01" number="1255.DF54565.158"/>

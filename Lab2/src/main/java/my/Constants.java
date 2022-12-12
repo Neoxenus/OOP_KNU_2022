@@ -6,6 +6,7 @@ public class Constants {
     }
 
     public static final String INPUT_XML = "src/main/resources/input.xml";
+    public static final String INVALID_PATH = "src/main/resources/invalid.xml";
     public static final String SPLIT_REGEX = " *, *\n? *";
 
 
