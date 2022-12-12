@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class ClassInfo {
 
-    private void getInfo() {
+    private Class<?> input(){
         Class<?> aClass = null;
         boolean classNotFound = true;
 
@@ -14,11 +14,13 @@ public class ClassInfo {
             try {
                 aClass = Class.forName(className);
             } catch (ClassNotFoundException e) {
-                System.out.println("Class not found");
+                System.out.println("Class not found, try type again correctly.\nExample: java.lang.Class");
                 classNotFound = true;
             }
         }
-
+        return aClass;
+    }
+    public void getInfo(Class<?> aClass) {
         System.out.println("Name: " + aClass.getName());
         System.out.println("Simple name: " + aClass.getSimpleName());
         System.out.println();
@@ -58,6 +60,7 @@ public class ClassInfo {
     }
 
     public static void main(String[] args) {
-        new ClassInfo().getInfo();
+        ClassInfo classInfo = new ClassInfo();
+        classInfo.getInfo(classInfo.input());
     }
 }
