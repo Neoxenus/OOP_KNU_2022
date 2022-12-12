@@ -15,7 +15,7 @@
 
     <view
         android:id="@+id/view"
-        class="com.example.lab3.GameView"
+        class="com.my.lab3.GameView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
