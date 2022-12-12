@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<medicines xmlns="http://www.nure.ua" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.nure.ua ../resources/input.xsd ">
+    <medicine>
+        <name>Ibuprofen</name>
+        <pharm>Med-corp</pharm>
+        <group>антибиотики</group>
+        <analogs>First Paracetamol,
+Second Paracetamol
+        </analogs>
+        <versions>
+            <version>
+                <certificate dataFrom="2020-01" dataTo="2021-01" number="1255.DF54565.158"/>
+                <package numberInPackage="12" priceForPackage="234$" type="Capsule"/>
+                <dosage>100mg</dosage>
+            </version>
+            <version>
+                <certificate dataFrom="2019-01" dataTo="2021-01" number="1255.DF54565.157"/>
+                <package numberInPackage="12" priceForPackage="243$" type="Pill"/>
+                <dosage>200mg</dosage>
+            </version>
+        </versions>
+    </medicine>
+    <medicine>
+        <name>Not Ibuprofen</name>
+        <pharm>Mega-corp</pharm>
+        <group>болеутоляющие</group>
+        <analogs>Not Paracetamol</analogs>
+        <versions>
+            <version>
+                <certificate dataFrom="2020-01" dataTo="2021-01" number="13435.DF54565.158"/>
+                <package numberInPackage="6" priceForPackage="123$" type="Gel"/>
+                <dosage>200mg</dosage>
+            </version>
+        </versions>
+    </medicine>
+</medicines>

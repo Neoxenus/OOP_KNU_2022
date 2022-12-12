@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   targetNamespace="http://www.nure.ua"
+		   xmlns="http://www.nure.ua"
+		   elementFormDefault="qualified">
+		
+	<xs:element name = "medicines">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="medicine" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="name" type="xs:string"/>
+
+							<xs:element name = "pharm">
+								<xs:simpleType>
+									<xs:restriction base = "xs:string">
+										<xs:pattern value = "\D+"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+
+							<xs:element name = "group">
+                                <xs:simpleType>
+									<xs:restriction base = "xs:string">
+										<xs:enumeration value = "антибиотики"/>
+										<xs:enumeration value = "болеутоляющие"/>
+										<xs:enumeration value = "витамины"/>
+									</xs:restriction>
+                                </xs:simpleType>
+							</xs:element>
+
+							<xs:element name = "analogs">
+								<xs:simpleType>
+									<xs:list itemType="xs:string"/>
+								</xs:simpleType>
+							</xs:element>
+
+							<xs:element name = "versions">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name = "version" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name = "certificate">
+														<xs:complexType>
+															<xs:attribute name="number" use = "required" type="xs:string" />
+															<xs:attribute name="dataFrom" use="required" type="xs:gYearMonth"/>
+															<xs:attribute name="dataTo" use="required" type="xs:gYearMonth"/>
+														</xs:complexType>
+													</xs:element>
+
+													<xs:element name = "package">
+														<xs:complexType>
+
+															<xs:attribute name="type" use="required">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="Pill" />
+																		<xs:enumeration value="Capsule" />
+																		<xs:enumeration value="Powder" />
+																		<xs:enumeration value="Ointment" />
+																		<xs:enumeration value="Gel" />
+																		<xs:enumeration value="Solution For Injection" />
+																		<xs:enumeration value="Mixture" />
+																		<xs:enumeration value="Aerosol" />
+																		<xs:enumeration value="Drop" />
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+
+															<xs:attribute name="numberInPackage" use="required"
+																		  type="xs:positiveInteger"/>
+
+															<xs:attribute name="priceForPackage" use = "required">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:pattern value="\d+\$" />
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+
+														</xs:complexType>
+													</xs:element>
+
+													<xs:element name = "dosage">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="\d+((ml)|(mg))" />
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
