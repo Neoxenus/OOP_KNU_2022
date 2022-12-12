@@ -7,25 +7,25 @@ public class NonBlockingQueue<T> {
     private final AtomicReference<Node<T>> tail;
 
     public NonBlockingQueue() {
-        Node<T> dummy = new Node<>();
-        this.head = new AtomicReference<>(dummy);
-        this.tail = new AtomicReference<>(dummy);
+        Node<T> tNode = new Node<>();
+        this.head = new AtomicReference<>(tNode);
+        this.tail = new AtomicReference<>(tNode);
     }
 
     private static class Node<T> {
-        T value;
+        T item;
         AtomicReference<Node<T>> next;
 
         Node() {
             this.next = new AtomicReference<>();
         }
-        Node(T value) {
-            this.value = value;
+        Node(T item) {
+            this.item = item;
             this.next = new AtomicReference<>();
         }
     }
 
-    public void push(T value) {
+    public void add(T value) {
         Node<T> toPush = new Node<>(value);
         Node<T> currentTailNode;
         Node<T> currentNextNode;
@@ -44,11 +44,10 @@ public class NonBlockingQueue<T> {
                 }
             }
         }
-
         tail.compareAndSet(currentTailNode, toPush);
     }
 
-    public T pop() {
+    public T poll() {
         T result;
         Node<T> currentHeadNode;
         Node<T> currentTailNode;
@@ -67,7 +66,7 @@ public class NonBlockingQueue<T> {
 
                     tail.compareAndSet(currentTailNode, currentNextNode);
                 } else {
-                    result = currentNextNode.value;
+                    result = currentNextNode.item;
 
                     if (head.compareAndSet(currentHeadNode, currentNextNode)) {
                         break;
@@ -77,5 +76,8 @@ public class NonBlockingQueue<T> {
         }
 
         return result;
+    }
+    public T peak() {
+        return head.get().item;
     }
 }
