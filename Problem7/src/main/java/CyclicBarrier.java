@@ -1,9 +1,8 @@
 
 public class CyclicBarrier {
-    int initialParties;
-    int partiesAwait;
+    private final int initialParties;
+    private int partiesAwait;
     Runnable cyclicBarrierEvent;
-
     public CyclicBarrier(int parties, Runnable cyclicBarrierEvent) {
         initialParties = parties;
         partiesAwait = parties;
@@ -19,5 +18,9 @@ public class CyclicBarrier {
             cyclicBarrierEvent.run();
             notifyAll();
         }
+    }
+
+    public int getParties() {
+        return partiesAwait;
     }
 }
